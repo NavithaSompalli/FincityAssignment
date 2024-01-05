@@ -22,6 +22,9 @@ class AddRoute extends Component {
     projectName: '',
     projectLink: '',
     projectDes: '',
+    errorMsgName: '',
+    errorMsgLink: '',
+    errorMsgDes: '',
   }
 
   onChangeName = event => {
@@ -39,21 +42,54 @@ class AddRoute extends Component {
   onSubmitForm = event => {
     event.preventDefault()
     const {projectDes, projectLink, projectName, projectList} = this.state
-    const object = {
-      UniqueNo: uuidv4(),
-      projectName,
-      projectLink,
-      projectDes,
-    }
 
-    this.setState({projectList: [...projectList, object]})
-    this.setState({projectDes: ''})
-    this.setState({projectName: ''})
-    this.setState({projectLink: ''})
+    if (projectDes === '' && projectLink === '' && projectName === '') {
+      this.setState({errorMsgName: 'Required'})
+      this.setState({errorMsgLink: 'Required'})
+      this.setState({errorMsgDes: 'Required'})
+    } else if (projectDes === '' && projectLink === '' && projectName !== '') {
+      this.setState({errorMsgLink: 'Required'})
+      this.setState({errorMsgDes: 'Required'})
+    } else if (projectDes !== '' && projectLink === '' && projectName === '') {
+      this.setState({errorMsgName: 'Required'})
+      this.setState({errorMsgLink: 'Required'})
+    } else if (projectDes === '' && projectLink !== '' && projectName === '') {
+      this.setState({errorMsgName: 'Required'})
+      this.setState({errorMsgDes: 'Required'})
+    } else if (projectDes !== '' && projectLink !== '' && projectName === '') {
+      this.setState({errorMsgName: 'Required'})
+    } else if (projectDes === '' && projectLink !== '' && projectName !== '') {
+      this.setState({errorMsgDes: 'Required'})
+    } else if (projectDes !== '' && projectLink === '' && projectName !== '') {
+      this.setState({errorMsgLink: 'Required'})
+    } else {
+      const object = {
+        UniqueNo: uuidv4(),
+        projectName,
+        projectLink,
+        projectDes,
+      }
+
+      this.setState({projectList: [...projectList, object]})
+      this.setState({projectDes: ''})
+      this.setState({projectName: ''})
+      this.setState({projectLink: ''})
+      this.setState({errorMsgName: ''})
+      this.setState({errorMsgLink: ''})
+      this.setState({errorMsgDes: ''})
+    }
   }
 
   render() {
-    const {projectName, projectLink, projectDes, projectList} = this.state
+    const {
+      projectName,
+      projectLink,
+      projectDes,
+      projectList,
+      errorMsgDes,
+      errorMsgLink,
+      errorMsgName,
+    } = this.state
     console.log(projectList)
     return (
       <div className="add-bg-container">
@@ -68,6 +104,7 @@ class AddRoute extends Component {
               onChange={this.onChangeName}
               value={projectName}
             />
+            <span className="error-msg">{errorMsgName}</span>
 
             <label htmlFor="link-element">Project Link</label>
             <input
@@ -77,6 +114,7 @@ class AddRoute extends Component {
               onChange={this.onChangeLink}
               value={projectLink}
             />
+            <span className="error-msg">{errorMsgLink}</span>
 
             <label htmlFor="des-element">Description</label>
             <input
@@ -86,6 +124,7 @@ class AddRoute extends Component {
               onChange={this.onChangeDescription}
               value={projectDes}
             />
+            <span className="error-msg">{errorMsgDes}</span>
             <button type="submit" className="add-button">
               Add
             </button>

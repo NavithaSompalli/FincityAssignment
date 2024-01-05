@@ -23,7 +23,6 @@
   background-color: #ffffffff;
   width: 300px;
   margin-top: 5px;
-  margin-bottom: 15px;
   border-radius: 5px;
 }
 
@@ -73,4 +72,9 @@
 
 .icon {
   font-size: 30px;
+}
+
+.error-msg {
+  color: red;
+  margin-bottom: 15px;
 }
