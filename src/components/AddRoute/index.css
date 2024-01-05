@@ -1,0 +1,76 @@
+.add-bg-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-size: cover;
+  background-color: aliceblue;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-heading {
+  font-family: 'Roboto';
+  font-weight: bold;
+}
+
+.input-element {
+  height: 40px;
+  background-color: #ffffffff;
+  width: 300px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.add-button {
+  background-color: orange;
+  align-self: flex-end;
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.image-element {
+  height: 300px;
+  width: 300px;
+}
+
+.li-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: space-between;
+  margin-bottom: 5px;
+}
+
+.ul-container {
+  width: 50%;
+  border: 1px solid #000000;
+  background-color: #ffffffff;
+  box-shadow: 1px 1px 1px #bfbdb6;
+}
+
+.view-projects-container {
+  height: 40px;
+  border-radius: 20px;
+  border: 1px solid #000000;
+  width: 150px;
+  background-color: transparent;
+}
+
+.icons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.icon {
+  font-size: 30px;
+}
